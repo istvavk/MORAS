@@ -1,0 +1,33 @@
+// pushamo ulazni argument na stack
+push argument 0
+// kopiramo ulazni argument na stack
+dup
+// pushamo 1 na stack
+push 1
+// usporedujemo dvije varijable na vrhu stacka
+gt
+// ako je ulazni argument veci od 1, jump na fib_loop label
+if-goto fib_loop
+// ako je ulazni argument 1 ili 0, vratimo ga
+return
+
+// oznaka za fibonacci petlju
+label fib_loop
+// dupliciramo vrijednost ulaznog argumenta na stacku
+dup
+// pushamo 2 na stack
+push 2
+// oduzimamo dvije vrijednosti na vrhu stacka
+sub
+// poziv fibonacci funkcije rekurzivno s rezultatom oduzimanja
+call 0
+// swapamo dvije vrijednosti na vrhu stacka
+swap
+// decrementamo vrijednost ulaznog argumenta na stacku
+dec
+// poziv fibonacci funkcije rekurzivno s decrementanim ulaznim argumentom
+call 0
+// zbrajamo dvije vrijednosti na vrhu stacka
+add
+// vracamo rez na vrh stacka
+return

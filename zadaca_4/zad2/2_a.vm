@@ -1,0 +1,79 @@
+// pushamo prvi element na stack
+push argument 0
+// pushamo drugi elemant na stack
+push argument 1
+// usporedujemo vrijednosti na vrhu stacka
+gt
+// ako je prvi element veci od drugog elementa, jump to x_gt_y
+if-goto x_gt_y
+// ako prvi element nije veci od drugog elementa, pushamo drugi element na stack
+push argument 1
+// pushamo treci element na stack
+push argument 2
+// usporedujemo dvije vrijednosti na vrhu stacka
+gt
+// ako je drugi elemant veci od treceg elementa, jump to y_gt_z
+if-goto y_gt_z
+// ako drugi element nije veci od treceg elementa, pushamo drugi element na stack
+push argument 1
+// vracamo vrijednost na vrhu stacka
+return
+
+// label for x_gt_y
+label x_gt_y
+// pushamo prvi element na stack
+push argument 0
+// pushamo treci element na stack
+push argument 2
+// usporedujemo dvije vrijednosti na vrhu stacka
+gt
+// ako je prvi elem veci od treceg elem, jump to x_gt_z
+if-goto x_gt_z
+// ako prvi element nije veci od treceg elementa, pushamo prvi elem na stack
+push argument 0
+// vracamo vrijednost na vrhu stacka
+return
+
+// label for y_gt_z
+label y_gt_z
+// pushamo prvi element na stack
+push argument 0
+// pushamo treci element na stack
+push argument 2
+// usporedujemo dvije vrijednosti na vrhu stacka
+gt
+// ako je prvi elem veci od treceg elem, jump to x_gt_z2
+if-goto x_gt_z2
+// ako prvi element nije veci od treceg elementa, pushamo treci elem na stack
+push argument 2
+// vracamo vrijednost na vrhu stacka
+return
+
+// label for x_gt_z
+label x_gt_z
+// pushamo drugi element na stack
+push argument 1
+// pushamo treci elem na stack
+push argument 2
+// usporedujemo dvije vrijednosti na vrhu stacka
+gt
+// ako je drugi elem veci od treceg, jump to y_gt_z2
+if-goto y_gt_z2
+// ako drugi elem nije veci od treceg elem, pushamo treci elem na stack
+push argument 2
+// vracamo vrijednost na vrhu stacka
+return
+
+// label for x_gt_z2
+label x_gt_z2
+// pushamo prvi elem na stack
+push argument 0
+// vracamo vrijednost na vrhu stacka
+return
+
+// label for y_gt_z2
+label y_gt_z2
+// pushamo drugi elem na stack
+push argument 1
+// vracamo vrijednost na vrhu stacka
+return

@@ -1,0 +1,62 @@
+// pushamo početnu adresu sortiranog arrayja na stack
+push argument 0
+// pushamo duljinu arrayja na stack
+push argument 1
+// pushamo element koji se trazi na stack
+push argument 2
+
+// postavimo početnu donju i gornju granicu raspona koji pretrazujemo
+push 0
+push argument 1
+
+label search_loop
+// provjera jel donja granica manja od gornje granice
+push 0
+lt
+if-goto not_found
+
+// izracunamo srednji indeks raspona koji trenutno pretrazujemo
+push 1
+div
+add
+
+// ucitamo element na srednjem indexu
+load
+
+// usporedimo element na srednjem indeksu s elementom koji trazimo
+push argument 2
+eq
+
+// ako su jednaki, vratimo srednji index
+if-goto found
+
+// ako je element na srednjem indeksu veći od elementa koji trazimo
+push argument 2
+lt
+if-goto lower_half
+
+// ako je element na srednjem indeksu manji od elementa koji trazimo
+push argument 2
+gt
+if-goto upper_half
+
+label lower_half
+// postavimo gornju granicu na srednji indeks
+swap
+dec
+swap
+goto search_loop
+
+label upper_half
+// postavimo donju granicu na srednji indeks
+inc
+goto search_loop
+
+label found
+// vratcamo srednji index
+return
+
+label not_found
+// vracamo -1 ako elem nije pronaden
+push -1
+return
